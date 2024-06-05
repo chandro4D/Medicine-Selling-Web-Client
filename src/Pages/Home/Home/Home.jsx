@@ -1,11 +1,16 @@
+import ProductsTable from "../../Shared/ProductsTable/ProductsTable";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import Discount from "../Discount/Discount";
 import Slider from "../Slider/Slider";
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
     return (
         <div>
+            <Helmet>
+                <title>HealthHaven | Home</title>
+            </Helmet>
             <div className="mb-20">
                 <h3 className="pt-40 text-center text-3xl text-red">This Is Home</h3>
 
@@ -17,6 +22,7 @@ const Home = () => {
                     <h1 className='text-center text-sky-500 text-4xl font-bold'>SEE SOME DISCOUNT PRODUCTS</h1>
                 </div>
                 <Discount></Discount>
+                <ProductsTable></ProductsTable>
             </div>
             {/* ---------------------------------FAQ-------------------- */}
             <div><h1 className='text-center text-sky-500 text-4xl font-bold'>SOME FREQUENTLY ASKED QUESTION</h1></div>

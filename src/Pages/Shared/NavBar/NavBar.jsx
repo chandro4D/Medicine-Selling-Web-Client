@@ -18,7 +18,7 @@ const NavBar = () => {
                 <div className="badge badge-secondary">+0</div>
             </button>
         </Link></li>
-        <li><a className="btn btn-secondary mt-3 text-xl text-white ">Join Us</a></li>
+        <li ><a className="btn btn-secondary mt-3 text-xl text-white ">Join Us</a></li>
        
         {/* {
             user ?

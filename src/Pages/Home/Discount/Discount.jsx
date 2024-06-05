@@ -13,7 +13,7 @@ import slide5 from "../../../assets/home/05.png"
 
 const Discount = () => {
     return (
-        <div className='my-20'>
+        <div className='my-20 mx-[85px]'>
             
             <Swiper
                 slidesPerView={4}
