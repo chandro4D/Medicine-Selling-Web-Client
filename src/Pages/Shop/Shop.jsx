@@ -11,7 +11,7 @@ const Shop = () => {
     const [products] = useProducts();
     const allProducts = products;
     return (
-        <div className="">
+        <div className="mx-[90px]">
             <Helmet>
                 <title>HealthHaven | Shop</title>
             </Helmet>
@@ -45,34 +45,34 @@ const Shop = () => {
 
                                 >
 
-                                    <th >
+                                    <th className="mb-5" >
                                         {index + 1}
                                     </th>
-                                    <td>
+                                    <td className="mb-5">
 
                                         <h3><img src={item.product_image} /> </h3>
 
                                     </td>
-                                    <td>
+                                    <td className="mb-5">
                                         <h3>{item.product_name}</h3>
 
                                     </td>
-                                    <td>
+                                    <td className="mb-5">
                                         <h3> {item.Category}</h3>
                                     </td>
-                                    <td>
+                                    <td className="mb-5">
                                         <h3>{item.product_company}</h3>
                                     </td>
-                                    <td>
+                                    <td className="mb-5">
                                         <h3> {item.price}</h3>
                                     </td>
-                                    <td>
+                                    <td className="mb-5">
                                         <h3> {item.weight}</h3>
                                     </td>
-                                    <td className="btn h-10 btn-secondary mr-3">
+                                    <td className="btn h-10 btn-secondary mr-3 mb-5">
                                         <button>select</button>
                                     </td>
-                                    <td className="text-pink-600 text-xl btn btn-outline">
+                                    <td className="text-pink-600 mb-5 text-xl btn btn-outline">
                                         <button><FaRegEye /></button>
                                     </td>
 

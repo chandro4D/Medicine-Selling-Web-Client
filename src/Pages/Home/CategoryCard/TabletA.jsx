@@ -1,11 +1,15 @@
 import { FaRegEye } from "react-icons/fa";
 import useProducts from "../../../Hook/useProducts";
+import { Helmet } from "react-helmet-async";
 
 const TabletA = () => {
     const [products] = useProducts();
     const tablet = products.filter(item => item.Category === 'tablet');
     return (
-        <div>
+        <div className="mx-[90px]">
+             <Helmet>
+                <title>HealthHaven | Tablet</title>
+            </Helmet>
             <h3 className="pt-40 text-center">Tablet A</h3>
             <div className="ml-[60px] mb-6">
                 <div className="overflow-x-auto ">
