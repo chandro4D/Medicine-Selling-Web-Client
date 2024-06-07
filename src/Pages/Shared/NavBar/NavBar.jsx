@@ -1,15 +1,36 @@
+import { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { CiLogout } from "react-icons/ci";
 
 
 const NavBar = () => {
-    const Links = <>
+    const { user, logOut } = useContext(AuthContext);
 
+
+    const handleSignOut = () => {
+        logOut()
+            .then(result => {
+
+                Swal.fire({
+                    icon: "success",
+                    text: "LogOut successfully!",
+
+                });
+                console.log(result.user);
+            })
+            .catch()
+    }
+
+    const Links = <>
         <li className="text-xl mt-3  "><Link to="/">Home</Link></li>
         <li className="text-xl mt-3"><Link to="/shop">Our Shop</Link></li>
-        
+
         <li className="text-xl mt-3"><Link to="/login">LogIn</Link></li>
-        <li className="text-xl mt-3"><Link to="/register">Register</Link></li>
+        <Link to="/register"><li ><a className="btn btn-secondary mt-3 text-xl text-white ">Join Us</a></li></Link>
+
 
         <li className="text-xl align-top mt-[6px]"><Link to="/dashboard/cart">
             <button className="btn">
@@ -18,23 +39,32 @@ const NavBar = () => {
                 <div className="badge badge-secondary">+0</div>
             </button>
         </Link></li>
-        <li ><a className="btn btn-secondary mt-3 text-xl text-white ">Join Us</a></li>
-       
-        {/* {
+
+
+        {
             user ?
                 <>
                     <div className=" tooltip tooltip-bottom mr-5" data-tip={user.displayName || user.email}  >
-                        <img className="rounded-full w-14" src={user.photoURL || "https://web.programming-hero.com/static/media/profileImage.934e5b10.png"} />
+                        <div className="dropdown dropdown-bottom">
+                            <div tabIndex={0}  className=" m-1"><img className="rounded-full w-14" src={user.photoURL || "https://web.programming-hero.com/static/media/profileImage.934e5b10.png"} /></div>
+                            <ul tabIndex={0} className="dropdown-content text-black z-[1] menu p-6 shadow bg-gradient-to-r from-cyan-500 to-blue-500 rounded-box w-72">
+                                <Link to="/updateProfile"><li className="font-semibold"><a>Update Profile</a></li></Link>
+                                <li className="font-semibold"><a>Dashboard</a></li>
+                                <li><a><button onClick={handleSignOut} className="btn bg-white w-[120px] font-bold  text-red-600 text-base  ">Logout<CiLogout className="text-2xl" /></button></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <Link to=""><button onClick={handleSignOut} className="btn  bg-green-600 text-xl font-medium ">SING OUT</button></Link>
+
 
                 </>
                 :
                 <>
-
+                    <div>
+                        <Link to="/register"><li ><a className="btn btn-secondary mt-3 text-xl text-white ">Join Us</a></li></Link>
+                    </div>
                 </>
 
-        } */}
+        }
 
     </>
     return (
@@ -50,7 +80,7 @@ const NavBar = () => {
                 </div>
                 <div className="flex lg:ml-[130px]">
                     <img className="mr-2 w-[60px] h-[60px] rounded-full" src="../../../../public/default.png" alt="" />
-                    <a className="text-white text-2xl font-bold  pt-3">HealthHaven</a>
+                    <a className="text-white text-2xl font-bold mr-[300px]  pt-3">HealthHaven</a>
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex mr-[350px] ">

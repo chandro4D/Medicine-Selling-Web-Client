@@ -15,6 +15,9 @@ import Capsule from "../Pages/Home/CategoryCard/Capsule";
 import Injection from "../Pages/Home/CategoryCard/Injection";
 import SyrupA from "../Pages/Home/CategoryCard/SyrupA";
 import TabletA from "../Pages/Home/CategoryCard/TabletA";
+import PrivateRoute from "../Routes/PrivateRoute"
+import UpdateProfile from "../../src/Pages/UpdateProfile/UpdateProfile"
+
 
 
 
@@ -42,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/babyCare",
-        element: <BabyCare></BabyCare>
+        element: <PrivateRoute><BabyCare></BabyCare></PrivateRoute>
       },
       
       {
@@ -67,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: "/TabletA",
         element: <TabletA></TabletA>
+      },
+      {
+        path: "/updateProfile",
+        element: <UpdateProfile></UpdateProfile>
       }
     ]
   },
