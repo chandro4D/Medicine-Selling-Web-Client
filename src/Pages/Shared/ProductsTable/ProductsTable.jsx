@@ -23,28 +23,28 @@ const ProductsTable = () => {
                         
                         <tr className="text-xs">
                             <th>
-                                {'index'}
+                                {"index + 1"}
                             </th>
                             <td>
 
-                                <h3><img src={'product.product_image'}  /> </h3>
+                                <h3><img src={"product_image"}  /> </h3>
 
                             </td>
                             <td>
-                                <h3>{'product_name'}</h3>
+                                <h3>{"product_name"}</h3>
 
                             </td>
                             <td>
-                            <h3> {'Category'}</h3>
+                            <h3> {"Category"}</h3>
                             </td>
                             <td>
-                                <h3>{'product_company'}</h3>
+                                <h3>{"product_company"}</h3>
                             </td>
                             <td>
-                                <h3> {'price'}</h3>
+                                <h3> {"price"}</h3>
                             </td>
                             <td>
-                                <h3> {'weight'}</h3>
+                                <h3> {"weight"}</h3>
                             </td>
                             <td className="btn h-10 btn-secondary mr-3">
                                 <button>select</button>

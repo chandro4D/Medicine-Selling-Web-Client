@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CategoryCard = () => {
     return (
         <div className="grid grid-cols-2 lg:w-[1300px]  sm:w-[500px] text-2xl lg:mx-[85px] mb-20 uppercase">
-            <Link to="/babyCare" >
+            <Link to='/babyCare'>
                 <div className=" h-[250px] mr-5 mb-5 rounded-xl bg-gradient-to-r from-indigo-500  to-pink-500">
                     <p className="pt-2 text-center  font-bold text-white">Baby Care</p>
                     <p className="text-center  font-bold text-white mb-2">Total Items : 0</p>
