@@ -6,7 +6,7 @@ const WomenCare = () => {
     const [products] = useProducts();
     const womensCare = products.filter(item => item.Category === 'womensCare');
     return (
-        <div className="mx-[90px]">
+        <div className="ml-20">
             <Helmet>
                 <title>HealthHaven | WomenCare</title>
             </Helmet>
@@ -29,39 +29,50 @@ const WomenCare = () => {
                         </thead>
                         <tbody>
                             {
-                               womensCare.map((item, index) => <tr
+                                womensCare.map((item, index) => <tr
+                                className="h-24"
                                     key={item._id}
                                 >
-                                    <th className="mb-6">
+                                    <th >
                                         {index + 1}
                                     </th>
-                                    <td className="mb-6">
+                                    <td >
 
                                         <h3><img src={item.product_image} /> </h3>
 
                                     </td>
-                                    <td className="mb-6">
+                                    <td >
                                         <h3>{item.product_name}</h3>
 
                                     </td>
                                     <td>
                                         <h3> {item.Category}</h3>
                                     </td>
-                                    <td className="mb-6">
+                                    <td >
                                         <h3>{item.product_company}</h3>
                                     </td>
-                                    <td className="mb-6">
+                                    <td >
                                         <h3> {item.price}</h3>
                                     </td>
-                                    <td className="mb-6">
+                                    <td >
                                         <h3> {item.weight}</h3>
                                     </td>
-                                    <td className="btn h-10 mb-6 btn-secondary mr-3">
+                                    <td className="btn h-10 mt-6 btn-secondary mr-3">
                                         <button>select</button>
                                     </td>
-                                    <td className="text-pink-600 mb-6 text-xl btn btn-outline">
-                                        <button><FaRegEye /></button>
-                                    </td>
+                                    <div className="dropdown dropdown-end ">
+                                        <div tabIndex={0} className=" m-1"><td className="text-pink-600 mt-6   text-xl btn btn-outline">
+                                            <button>
+                                                <FaRegEye />
+                                            </button>
+                                        </td></div>
+                                        <ul tabIndex={0} className="dropdown-content text-black z-[1] menu p-6 shadow bg-gradient-to-r from-cyan-500 to-blue-500 rounded-box w-72">
+                                            <li className="font-semibold"><a>{item.product_name}</a></li>
+                                            <li className="font-semibold"><a>Dashboard</a></li>
+
+                                        </ul>
+                                    </div>
+
 
 
 
