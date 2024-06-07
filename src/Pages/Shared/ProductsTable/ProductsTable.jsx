@@ -1,9 +1,10 @@
 import { FaRegEye } from "react-icons/fa";
 
 const ProductsTable = () => {
+    
     return (
-        <div className="ml-[60px]">
-            <div className="overflow-x-auto">
+        <div className="ml-[60px] mb-6">
+            <div className="overflow-x-auto ">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -19,31 +20,31 @@ const ProductsTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
+                        
+                        <tr className="text-xs">
                             <th>
-                                {1}
+                                {'index'}
                             </th>
                             <td>
 
-                                <h3>image</h3>
+                                <h3><img src={'product.product_image'}  /> </h3>
 
                             </td>
                             <td>
-                                <h3>Product Name</h3>
+                                <h3>{'product_name'}</h3>
 
                             </td>
                             <td>
-                                <h3> Category</h3>
+                            <h3> {'Category'}</h3>
                             </td>
                             <td>
-                                <h3>Product Company</h3>
+                                <h3>{'product_company'}</h3>
                             </td>
                             <td>
-                                <h3> Price</h3>
+                                <h3> {'price'}</h3>
                             </td>
                             <td>
-                                <h3> Weight</h3>
+                                <h3> {'weight'}</h3>
                             </td>
                             <td className="btn h-10 btn-secondary mr-3">
                                 <button>select</button>
