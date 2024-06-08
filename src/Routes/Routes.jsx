@@ -17,6 +17,9 @@ import SyrupA from "../Pages/Home/CategoryCard/SyrupA";
 import TabletA from "../Pages/Home/CategoryCard/TabletA";
 import PrivateRoute from "../Routes/PrivateRoute"
 import UpdateProfile from "../../src/Pages/UpdateProfile/UpdateProfile"
+import Dashboard from "../Layout/Dashboard/Dashboard";
+import Cart from "../Layout/Dashboard/Cart/Cart";
+import UserHome from "../Layout/Dashboard/UserHome/UserHome";
 
 
 
@@ -74,7 +77,27 @@ export const router = createBrowserRouter([
       {
         path: "/updateProfile",
         element: <UpdateProfile></UpdateProfile>
+      },
+      {
+        
+          path: 'cart',
+          element: <Cart></Cart>
+       
       }
     ]
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'cart',
+        element: <Cart></Cart>
+      },
+      {
+        path: 'userHome',
+        element: <UserHome></UserHome>
+      }
+    ]
+  }
 ]);

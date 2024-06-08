@@ -6,6 +6,9 @@ import { useContext } from "react";
 import {AuthContext} from "../../../src/Provider/AuthProvider"
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import useCart from "../../Hook/useCart";
+
 
 
 
@@ -17,6 +20,10 @@ const Shop = () => {
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [ ,refetch] = useCart();
+    
+    const axiosSecure = useAxiosSecure();
+
     const handleAddToCart = medicine => {
       if(user && user.email){
         const cartItem = {
@@ -27,9 +34,26 @@ const Shop = () => {
             price:medicine.price,
             company:medicine.product_company,
             Category:medicine.Category,
-            weight:medicine.weight
+            weight:medicine.weight,
+            product:medicine.product_name
         }
         console.log(cartItem);
+        axiosSecure.post("/carts",cartItem)
+        .then(res => {
+            console.log(res.data)
+            if(res.data.insertedId){
+                Swal.fire({
+                    position: "top",
+                    icon: "success",
+                    
+                    title: `${medicine.product_name} `,
+                    text: "ADDED TO YOUR CART SUCCESSFULLY",
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
+                  refetch()
+            }
+        })
       }
       else{
         Swal.fire({
