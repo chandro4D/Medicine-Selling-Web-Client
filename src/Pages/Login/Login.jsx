@@ -4,9 +4,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const Login = () => {
     const { signIn, googleLogin } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
+
 
     const location = useLocation();
     console.log(location);
@@ -40,6 +43,7 @@ const Login = () => {
 
             })
     }
+    const role = "user";
     //--------- Google Login-----------
     const handleGoogleLogin = e => {
         e.preventDefault();
@@ -49,12 +53,13 @@ const Login = () => {
                 const userInfo = {
                     email: result.user?.email,
                     name: result.user?.displayName,
-                    password: result.user?.password
+                    role
+                    
                 }
-                // axiosPublic.post('/users', userInfo)
-                //     .then(res => {
-                //         console.log(res.data);
-                //     })
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
                 Swal.fire({
                     icon: "success",
                     text: "LogIn successfully!",

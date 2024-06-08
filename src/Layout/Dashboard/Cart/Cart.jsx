@@ -39,70 +39,86 @@ const Cart = () => {
     }
     return (
         <div >
-            <div className="h-24 w-[1100px] bg-gradient-to-r from-cyan-500 to-blue-500 mb-20 ">
-                <h1 className="text-center font-semibold text-white text-4xl pt-5">Cart Page</h1>
+            {
+                cart.length > 0 ? <>
+                    <div className="h-24 w-[1100px] bg-gradient-to-r from-cyan-500 to-blue-500 mb-20 ">
+                        <h1 className="text-center font-semibold text-white text-4xl pt-5">Cart Page</h1>
 
-            </div>
-
-
-            <div className="ml-40">
-                <div className="overflow-x-auto">
-                    <table className="table">
-                        {/* head */}
-                        <thead>
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th>PRODUCT NAME</th>
-                                <th>COMPANY</th>
-                                <th>PRICE</th>
-                                <th>DELETE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                cart.map((item, index) => <tr key={item._id}>
-                                    <th>
-                                        {index + 1}
-                                    </th>
-
-                                    <td>
-                                        {item.product}
-                                    </td>
-                                    <td>
-                                        {item.company}
-                                    </td>
-                                    <td>{item.price}</td>
-
-                                    <th>
-                                        <button
-                                            onClick={() => handleDelete(item._id)}
-                                            className="btn btn-ghost btn-xl bg-red-500 text-xl"><RiDeleteBin6Line />
-                                        </button>
-                                    </th>
-                                </tr>)
-                            }
+                    </div>
 
 
+                    <div className="ml-40">
+                        <div className="overflow-x-auto">
+                            <table className="table">
+                                {/* head */}
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>PRODUCT NAME</th>
+                                        <th>COMPANY</th>
+                                        <th>PRICE</th>
+                                        <th>DELETE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        cart.map((item, index) => <tr key={item._id}>
+                                            <th>
+                                                {index + 1}
+                                            </th>
+
+                                            <td>
+                                                {item.product}
+                                            </td>
+                                            <td>
+                                                {item.company}
+                                            </td>
+                                            <td>{item.price}</td>
+
+                                            <th>
+                                                <button
+                                                    onClick={() => handleDelete(item._id)}
+                                                    className="btn btn-ghost btn-xl bg-red-500 text-xl"><RiDeleteBin6Line />
+                                                </button>
+                                            </th>
+                                        </tr>)
+                                    }
 
 
-                        </tbody>
 
 
-                    </table>
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="flex justify-between mx-28 my-10  ">
+                            <h2 className="text-2xl font-semibold">TOTAL ORDERS : {cart.length}</h2>
+                            <button className="btn w-[400PX]  bg-gradient-to-r from-cyan-500 to-blue-500 text-white sm:btn-sm md:btn-md ">CHECKOUT</button>
+                            <h2 className="text-2xl font-semibold">TOTAL PRICE : {parseFloat(totalPrice).toFixed(2)} BDT </h2>
+
+
+                        </div>
+
+                    </div>
+
+                </> :
+                <>
+                <div className="pt-40  mb-10">
+                    <h3 className="text-center font-semibold text-pink-600 text-3xl">YOU  HAVEN`T  ADDED  ANYTHING  YET</h3>
+
                 </div>
-            </div>
-            <div>
-                <div className="flex justify-between mx-28 my-10  ">
-                    <h2 className="text-2xl font-semibold">TOTAL ORDERS : {cart.length}</h2>
-                    <button className="btn w-[400PX]  bg-gradient-to-r from-cyan-500 to-blue-500 text-white sm:btn-sm md:btn-md ">CHECKOUT</button>
-                    <h2 className="text-2xl font-semibold">TOTAL PRICE : {parseFloat(totalPrice).toFixed(2)} BDT </h2>
-                    
+                </>
+            }
 
-                </div>
-                
-            </div>
+
+
+
+
         </div>
     );
 };

@@ -5,10 +5,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 
 const Register = () => {
 
+    const axiosPublic = useAxiosPublic();
 
     const [showPassword, setShowPassword] = useState(false);
     const [registerError, setRegisterError] = useState("");
@@ -37,77 +39,75 @@ const Register = () => {
         const PhotoURL = e.target.PhotoURL.value;
         const role = `${selectedRole}`
 
-
-
-
         console.log(email, password, name, PhotoURL, role);
 
-        // if (password.length < 6) {
-        //     setRegisterError('Password should be at least 6 characters');
-        //     Swal.fire({
-        //         icon: "error",
-        //         text: "Password should be at least 6 characters!",
+        if (password.length < 6) {
+            setRegisterError('Password should be at least 6 characters');
+            Swal.fire({
+                icon: "error",
+                text: "Password should be at least 6 characters!",
 
-        //     });
-        //     return;
-        // }
-        // else if (!/[A-Z]/.test(password)) {
-        //     setRegisterError('Your password should have at least one upper case letter');
+            });
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            setRegisterError('Your password should have at least one upper case letter');
 
-        //     Swal.fire({
-        //         icon: "error",
-        //         text: "Your password should have at least one upper case letter!",
+            Swal.fire({
+                icon: "error",
+                text: "Your password should have at least one upper case letter!",
 
-        //     });
-        //     return;
-        // }
-        // else if (!/[a-z]/.test(password)) {
-        //     setRegisterError('Your password should have at least one lower case letter');
-        //     Swal.fire({
-        //         icon: "error",
-        //         text: "Your password should have at least one lower case letter!",
+            });
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            setRegisterError('Your password should have at least one lower case letter');
+            Swal.fire({
+                icon: "error",
+                text: "Your password should have at least one lower case letter!",
 
-        //     });
-        //     return;
-        // }
-        // setRegisterError('');
-        // setSuccess('');
-        // createUser(email, password, name, PhotoURL)
-        //     .then(result => {
+            });
+            return;
+        }
+        setRegisterError('');
+        setSuccess('');
+        createUser(email, password, name, PhotoURL)
+            .then(result => {
 
-        //         console.log(result.user);
-        //         setUser(result.user);
-        //         setSuccess("Account Created successfully");
-        //         // create user entry--------------
-        //         const userInfo = {
-        //             email,
-        //             password,
-        //             name,
-        //             PhotoURL
+                console.log(result.user);
+                setUser(result.user);
+                setSuccess("Account Created successfully");
+                // create user entry--------------
+                const userInfo = {
+                    email,
+                    name,
+                    PhotoURL,
+                    role
 
-        //         }
-        //         axiosPublic.post('/users', userInfo)
-        //             .then(res => {
-        //                 if (res.data.insertedId) {
-        //                     Swal.fire({
-        //                         icon: "success",
-        //                         text: "Account Created successfully!",
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                icon: "success",
+                                text: "Account Created  successfully!",
 
-        //                     });
-        //                 }
-        //             })
+                            });
+                        }
+                    })
 
 
-        //         updateUserProfile(name, PhotoURL)
-        //         // .then()
-        //         navigate("/");
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //         setRegisterError(error.message);
-        //     })
+                updateUserProfile(name, PhotoURL)
+                // .then()
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error);
+                setRegisterError(error.message);
+            })
     }
     //--------- Google Login-----------
+    const role = "user";
     const handleGoogleLogin = e => {
         e.preventDefault();
         googleLogin()
@@ -115,7 +115,8 @@ const Register = () => {
                 console.log(result.user)
                 const userInfo = {
                     email: result.user?.email,
-                    name: result.user?.displayName
+                    name: result.user?.displayName,
+                    role
                 }
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
