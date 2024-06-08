@@ -2,7 +2,10 @@
 import { Helmet } from "react-helmet-async";
 import useProducts from "../../Hook/useProducts";
 import { FaRegEye } from "react-icons/fa";
-
+import { useContext } from "react";
+import {AuthContext} from "../../../src/Provider/AuthProvider"
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +14,39 @@ import { FaRegEye } from "react-icons/fa";
 const Shop = () => {
     const [products] = useProducts();
     const allProducts = products;
+    const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const handleAddToCart = medicine => {
+      if(user && user.email){
+        const cartItem = {
+            menuId: medicine._id,
+            email:user.email,
+            name:user.displayName,
+            image: medicine.product_image,
+            price:medicine.price,
+            company:medicine.product_company,
+            Category:medicine.Category,
+            weight:medicine.weight
+        }
+        console.log(cartItem);
+      }
+      else{
+        Swal.fire({
+            title: "YOU ARE NOT LOGGED IN",
+            text: "PLEASE LOGIN TO ADD TO CART",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "YES, LOGIN!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/login",{state: {from: location}} )
+            }
+          });
+      }
+    }
     return (
         <div className="mx-10">
             <Helmet>
@@ -71,7 +107,9 @@ const Shop = () => {
                                         <h3> {item.weight}</h3>
                                     </td>
                                     <td className="btn h-10 btn-secondary mr-3 mt-6 ">
-                                        <button>select</button>
+                                        <button
+                                        onClick={() => handleAddToCart(item)}
+                                        >select</button>
                                     </td>
                                     <div className="dropdown dropdown-end ">
                                         <div tabIndex={0} className=" m-1"><td className="text-pink-600 mt-6   text-xl btn btn-outline">
