@@ -18,13 +18,16 @@ const Register = () => {
 
     const location = useLocation();
     console.log(location);
-   
+
     const from = location.state?.from?.pathname || "/";
 
-    const { createUser,googleLogin, setUser, updateUserProfile } = useContext(AuthContext);
-    
+    const { createUser, googleLogin, setUser, updateUserProfile } = useContext(AuthContext);
 
+    const [selectedRole, setSelectedRole] = useState('user');
 
+    const handleRoleChange = (event) => {
+        setSelectedRole(event.target.value);
+    };
 
     const handleRegister = e => {
         e.preventDefault();
@@ -32,75 +35,77 @@ const Register = () => {
         const password = e.target.password.value;
         const name = e.target.name.value;
         const PhotoURL = e.target.PhotoURL.value;
-        
-        
-
-        console.log(email, password, name, PhotoURL);
-
-        if (password.length < 6) {
-            setRegisterError('Password should be at least 6 characters');
-            Swal.fire({
-                icon: "error",
-                text: "Password should be at least 6 characters!",
-
-            });
-            return;
-        }
-        else if (!/[A-Z]/.test(password)) {
-            setRegisterError('Your password should have at least one upper case letter');
-
-            Swal.fire({
-                icon: "error",
-                text: "Your password should have at least one upper case letter!",
-
-            });
-            return;
-        }
-        else if (!/[a-z]/.test(password)) {
-            setRegisterError('Your password should have at least one lower case letter');
-            Swal.fire({
-                icon: "error",
-                text: "Your password should have at least one lower case letter!",
-
-            });
-            return;
-        }
-        setRegisterError('');
-        setSuccess('');
-        createUser(email, password, name, PhotoURL)
-            .then(result => {
-
-                console.log(result.user);
-                setUser(result.user);
-                setSuccess("Account Created successfully");
-                // create user entry--------------
-                const userInfo = {
-                    email,
-                    password,
-                    name,
-                    PhotoURL
-
-                }
-                axiosPublic.post('/users', userInfo)
-                    .then(res => {
-                        if (res.data.insertedId) {
-                            Swal.fire({
-                                icon: "success",
-                                text: "Account Created successfully!",
-
-                            });
-                        }
-                    })
+        const role = `${selectedRole}`
 
 
-                updateUserProfile(name, PhotoURL)
-                // .then()
-                navigate("/");
-            })
-            .catch(error => {
-                console.log(error);
-                setRegisterError(error.message);
-            })
+
+
+        console.log(email, password, name, PhotoURL, role);
+
+        // if (password.length < 6) {
+        //     setRegisterError('Password should be at least 6 characters');
+        //     Swal.fire({
+        //         icon: "error",
+        //         text: "Password should be at least 6 characters!",
+
+        //     });
+        //     return;
+        // }
+        // else if (!/[A-Z]/.test(password)) {
+        //     setRegisterError('Your password should have at least one upper case letter');
+
+        //     Swal.fire({
+        //         icon: "error",
+        //         text: "Your password should have at least one upper case letter!",
+
+        //     });
+        //     return;
+        // }
+        // else if (!/[a-z]/.test(password)) {
+        //     setRegisterError('Your password should have at least one lower case letter');
+        //     Swal.fire({
+        //         icon: "error",
+        //         text: "Your password should have at least one lower case letter!",
+
+        //     });
+        //     return;
+        // }
+        // setRegisterError('');
+        // setSuccess('');
+        // createUser(email, password, name, PhotoURL)
+        //     .then(result => {
+
+        //         console.log(result.user);
+        //         setUser(result.user);
+        //         setSuccess("Account Created successfully");
+        //         // create user entry--------------
+        //         const userInfo = {
+        //             email,
+        //             password,
+        //             name,
+        //             PhotoURL
+
+        //         }
+        //         axiosPublic.post('/users', userInfo)
+        //             .then(res => {
+        //                 if (res.data.insertedId) {
+        //                     Swal.fire({
+        //                         icon: "success",
+        //                         text: "Account Created successfully!",
+
+        //                     });
+        //                 }
+        //             })
+
+
+        //         updateUserProfile(name, PhotoURL)
+        //         // .then()
+        //         navigate("/");
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //         setRegisterError(error.message);
+        //     })
     }
     //--------- Google Login-----------
     const handleGoogleLogin = e => {
@@ -171,19 +176,21 @@ const Register = () => {
                     </div>
                     <br />
 
-
+                    
                     <div>
-                        <select className="select select-warning w-full max-w-xs"
+                        <label className="form-control  lg:w-[400px] sm:w-[250px] h-[50px]">
+                           
+                           <select 
+                           value={selectedRole} required onChange={handleRoleChange}
+                           className="select select-bordered">
+                               
+                               <option className="text-center  text-xl">user</option>
+                               <option className="text-center  text-xl">seller</option>
+                               
+                           </select>
+                           
+                       </label>
                         
-                        >
-                            <option disabled selected >Pick a pizza</option>
-                            <option>Cheese</option>
-                            <option>Veggie</option>
-                            <option>Pepperoni</option>
-                            <option>Margherita</option>
-                            <option>Hawaiian</option>
-                        </select>
-
                     </div>
 
 

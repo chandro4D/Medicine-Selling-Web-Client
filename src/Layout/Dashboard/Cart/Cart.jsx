@@ -1,25 +1,51 @@
-import { RiDeleteBin6Line } from "react-icons/ri";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useCart from "../../../Hook/useCart";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 
 
 const Cart = () => {
     const [cart, refetch] = useCart();
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+    const axiosSecure = useAxiosSecure();
+
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "YOU WANT TO DELETE!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "YES!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/carts/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+            }
+        });
+    }
     return (
         <div >
-            <div className="h-24 w-[1300px] bg-gradient-to-r from-cyan-500 to-blue-500 mb-20 ">
+            <div className="h-24 w-[1100px] bg-gradient-to-r from-cyan-500 to-blue-500 mb-20 ">
                 <h1 className="text-center font-semibold text-white text-4xl pt-5">Cart Page</h1>
 
             </div>
-            <div>
-                <div className="flex justify-evenly">
-                    <h2 className="text-4xl ">TOTAL ORDERS : {cart.length}</h2>
-                    <h2 className="text-4xl">TOTAL PRICE : {totalPrice}$ </h2>
 
-                </div>
-            </div>
 
-            <div>
+            <div className="ml-40">
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
@@ -48,7 +74,7 @@ const Cart = () => {
                                         {item.company}
                                     </td>
                                     <td>{item.price}</td>
-                                    
+
                                     <th>
                                         <button
                                             onClick={() => handleDelete(item._id)}
@@ -66,6 +92,16 @@ const Cart = () => {
 
                     </table>
                 </div>
+            </div>
+            <div>
+                <div className="flex justify-between mx-28 my-10  ">
+                    <h2 className="text-2xl font-semibold">TOTAL ORDERS : {cart.length}</h2>
+                    <button className="btn w-[400PX]  bg-gradient-to-r from-cyan-500 to-blue-500 text-white sm:btn-sm md:btn-md ">CHECKOUT</button>
+                    <h2 className="text-2xl font-semibold">TOTAL PRICE : {parseFloat(totalPrice).toFixed(2)} BDT </h2>
+                    
+
+                </div>
+                
             </div>
         </div>
     );

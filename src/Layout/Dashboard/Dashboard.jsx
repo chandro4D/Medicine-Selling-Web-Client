@@ -5,8 +5,8 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
     return (
-        <div className="flex">
-            <div className="w-64 min-h-screen bg-orange-400">
+        <div className="flex ml-24">
+            <div className="w-72 min-h-screen bg-orange-400">
                 <ul className="menu p-4 text-white">
                     <li>
                         <NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink>
