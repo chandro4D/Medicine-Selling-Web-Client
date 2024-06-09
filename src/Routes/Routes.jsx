@@ -20,6 +20,7 @@ import UpdateProfile from "../../src/Pages/UpdateProfile/UpdateProfile"
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Layout/Dashboard/Cart/Cart";
 import UserHome from "../Layout/Dashboard/UserHome/UserHome";
+import AllUsers from "../Layout/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
       {
         path: 'userHome',
         element: <UserHome></UserHome>
+      },
+      {
+        path: 'allUsers',
+        element: <AllUsers></AllUsers>
       }
     ]
   }
