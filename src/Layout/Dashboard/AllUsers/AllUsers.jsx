@@ -58,7 +58,7 @@ const AllUsers = () => {
 
     }
     return (
-        <div>
+        <div className="ml-36">
             <div>
                 
             </div>
@@ -85,8 +85,9 @@ const AllUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
+                                
                                 <td>
-                                    {user.role === 'admin' ? 'Admin' :
+                                    {user.role === 'admin' ? 'Admin' : user.role === 'seller' ? 'Seller' :
                                         <button
                                             onClick={() => handleMakeAdmin(user._id)}
                                             className="btn bg-orange-400 btn-xl text-white text-2xl"><FaUsers></FaUsers>

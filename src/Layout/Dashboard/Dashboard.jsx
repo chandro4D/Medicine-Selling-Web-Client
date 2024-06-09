@@ -1,11 +1,15 @@
 import { FaBook, FaCartPlus, FaEnvelope, FaHome, FaList, FaUsers } from "react-icons/fa";
 import { MdRestaurantMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../../Hook/useAdmin";
+import useSeller from "../../Hook/useSeller";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
-    const isSeller = true;
+    const [isAdmin] = useAdmin();
+    const [isSeller] = useSeller();
+    // const isAdmin = true;
+    // const isSeller = true;
     return (
         <div className="flex  ml-24">
             <div className="w-72 min-h-screen bg-orange-400">
@@ -15,7 +19,8 @@ const Dashboard = () => {
                     <h1 className="text-xl pl-9 mb-3 font-bold">HealthHaven</h1>
                     </div>
                     {
-                        isAdmin ? <>
+                        isAdmin ?
+                         <>
                             <li>
                                 <NavLink to="/dashboard/adminHome"><FaHome></FaHome> ADMIN HOME</NavLink>
                             </li>
@@ -34,10 +39,24 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/manageBookings"> <FaBook></FaBook> MANAGE BANNER</NavLink>
                             </li>
-
-
                         </>
-                            :
+                         :
+                         isSeller ? 
+                         <>
+                          <li>
+                                <NavLink to="/dashboard/userHome"><FaHome></FaHome> Seller Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/cart'><FaCartPlus></FaCartPlus> Manage Medicine</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Payment History</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Advertisement</NavLink>
+                            </li>
+                         </>
+                         :
                             <>
                                 <li>
                                     <NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink>
@@ -50,26 +69,7 @@ const Dashboard = () => {
                                 </li>
                             </>
                     }
-                    {
-                        !isSeller ? <>
-
-                            <li>
-                                <NavLink to="/dashboard/userHome"><FaHome></FaHome> Seller Home</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/cart'><FaCartPlus></FaCartPlus> Manage Medicine</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Payment History</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Advertisement</NavLink>
-                            </li>
-
-                        </> :
-                            <>
-                            </>
-                    }
+                    
 
 
 
