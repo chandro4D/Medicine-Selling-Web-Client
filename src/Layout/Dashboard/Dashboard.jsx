@@ -1,5 +1,5 @@
 import { FaBook, FaCartPlus, FaEnvelope, FaHome, FaList, FaUsers } from "react-icons/fa";
-import { MdRestaurantMenu } from "react-icons/md";
+import { MdOutlineManageAccounts, MdRestaurantMenu } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../Hook/useAdmin";
 import useSeller from "../../Hook/useSeller";
@@ -12,7 +12,7 @@ const Dashboard = () => {
     // const isSeller = true;
     return (
         <div className="flex  ml-24">
-            <div className="w-72 min-h-screen bg-orange-400">
+            <div className="w-72 min-h-screen bg-gradient-to-r from-indigo-500  to-pink-500">
                 <ul className="menu pl-8  text-white">
                     <div className="pt-8">
                     <img className="mr-2 ml-16 mb-2 w-[80px] h-[80px] rounded-full" src="../../../../public/default.png" alt="" />
@@ -28,7 +28,7 @@ const Dashboard = () => {
                                 <NavLink to="/dashboard/allUsers"> <FaUsers />MANAGE USERS</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/addItems">MANAGE CATEGORY</NavLink>
+                                <NavLink to="/dashboard/addItems"><MdOutlineManageAccounts/>MANAGE CATEGORY</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/manageItems"><FaList></FaList> PAYMENT MANAGEMENT</NavLink>
@@ -47,7 +47,7 @@ const Dashboard = () => {
                                 <NavLink to="/dashboard/userHome"><FaHome></FaHome> Seller Home</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/cart'><FaCartPlus></FaCartPlus> Manage Medicine</NavLink>
+                                <NavLink to='/dashboard/manageMedicine'><FaCartPlus></FaCartPlus> Manage Medicine</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Payment History</NavLink>

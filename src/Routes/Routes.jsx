@@ -21,6 +21,9 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Layout/Dashboard/Cart/Cart";
 import UserHome from "../Layout/Dashboard/UserHome/UserHome";
 import AllUsers from "../Layout/Dashboard/AllUsers/AllUsers";
+import SellerRoute from "./SellerRoute";
+import AddItem from "../Layout/Dashboard/AddItem/AddItem";
+import ManageMedicine from "../Layout/Dashboard/ManageMedicine/ManageMedicine";
 
 
 
@@ -102,6 +105,14 @@ export const router = createBrowserRouter([
       {
         path: 'allUsers',
         element: <AllUsers></AllUsers>
+      },
+      {
+        path: 'addItems',
+        element: <AddItem></AddItem>
+      },
+      {
+        path: 'manageMedicine',
+        element: <ManageMedicine></ManageMedicine>
       }
     ]
   }
