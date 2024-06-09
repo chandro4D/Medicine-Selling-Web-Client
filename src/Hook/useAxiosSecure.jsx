@@ -4,7 +4,7 @@ import axios from "axios";
 // import { AuthContext } from "../Provider/AuthProvider";
 
 export const axiosSecure = axios.create({
-    baseURL: 'http://localhost:7000'
+    baseURL: 'https://medicine-selling-server.vercel.app'
 })
 const useAxiosSecure = () => {
     // const navigate = useNavigate();

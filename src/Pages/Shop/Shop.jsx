@@ -7,7 +7,7 @@ import {AuthContext} from "../../../src/Provider/AuthProvider"
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
-import useCart from "../../Hook/useCart";
+// import useCart from "../../Hook/useCart";
 
 
 
@@ -15,27 +15,28 @@ import useCart from "../../Hook/useCart";
 
 
 const Shop = () => {
-    const [products] = useProducts();
-    const allProducts = products;
+    // const [products] = useProducts();
+    // const allProducts = products;
+    const [shop, refetch] = useProducts();
     const {user} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const [ ,refetch] = useCart();
+    // const [ ,refetch] = useCart();
     
     const axiosSecure = useAxiosSecure();
 
-    const handleAddToCart = medicine => {
+    const handleAddToCart = item => {
       if(user && user.email){
         const cartItem = {
-            menuId: medicine._id,
+            menuId: item._id,
             email:user.email,
             name:user.displayName,
-            image: medicine.product_image,
-            price:medicine.price,
-            company:medicine.product_company,
-            Category:medicine.Category,
-            weight:medicine.weight,
-            product:medicine.product_name
+            image: item.product_image,
+            price:item.price,
+            company:item.product_company,
+            Category:item.Category,
+            weight:item.weight,
+            product:item.product_name
         }
         console.log(cartItem);
         axiosSecure.post("/carts",cartItem)
@@ -46,7 +47,7 @@ const Shop = () => {
                     position: "top",
                     icon: "success",
                     
-                    title: `${medicine.product_name} `,
+                    title: `${item.product_name} `,
                     text: "ADDED TO YOUR CART SUCCESSFULLY",
                     showConfirmButton: false,
                     timer: 2000
@@ -98,7 +99,7 @@ const Shop = () => {
                     <tbody >
 
                         {
-                            allProducts.map((item, index) =>
+                            shop.map((item, index) =>
                                 <tr
                                     className="h-24"
                                     key={item._id}
