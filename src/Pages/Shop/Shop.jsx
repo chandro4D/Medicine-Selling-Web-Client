@@ -77,7 +77,7 @@ const Shop = () => {
             <Helmet>
                 <title>HealthHaven | Shop</title>
             </Helmet>
-            <h3 className="pt-40 text-center text-3xl text-red">This Is Shop Page</h3>
+            <div><h1 className='text-center text-sky-500 text-4xl font-bold mb-5 pt-40'>SEE ALL MEDICINE HERE</h1></div>
 
 
 
@@ -112,7 +112,7 @@ const Shop = () => {
                                     </th>
                                     <td>
 
-                                        <h3><img src={item.product_image} /> </h3>
+                                    <h3><img className="w-20 h-16 rounded-lg" src={item.product_image} /> </h3>
 
                                     </td>
                                     <td>
@@ -143,8 +143,11 @@ const Shop = () => {
                                             </button>
                                         </td></div>
                                         <ul tabIndex={0} className="dropdown-content text-black z-[1] menu p-6 shadow bg-gradient-to-r from-cyan-500 to-blue-500 rounded-box w-72">
-                                            <li className="font-semibold"><a>{item.product_name}</a></li>
-                                            <li className="font-semibold"><a>Dashboard</a></li>
+                                            <li className="font-semibold"><a><img className="w-60 h-28 rounded-lg" src={item.product_image} /> </a></li>
+                                            <li className="font-semibold"><a>Name:{item.product_name}</a></li>
+                                            <li className="font-semibold"><a>Company:{item.product_company}</a></li>
+                                            <li className="font-semibold"><a>Price:{item.price}</a></li>
+                                            <li className="font-semibold"><a>{item.weight}ML</a></li>
 
                                         </ul>
                                     </div>

@@ -69,7 +69,7 @@ const Injection = () => {
             <Helmet>
                 <title>HealthHaven | Injection</title>
             </Helmet>
-            <h3 className="pt-40 text-center">Injection</h3>
+            <div><h1 className='text-center text-sky-500 text-4xl font-bold pt-40 mb-5'>SEE ALL INJECTION HERE</h1></div>
             <div className="ml-[60px] mb-6">
                 <div className="overflow-x-auto ">
                     <table className="table">
@@ -96,7 +96,7 @@ const Injection = () => {
                                     </th>
                                     <td className="mb-6">
 
-                                        <h3><img src={item.product_image} /> </h3>
+                                        <h3><img className="w-20 h-16 rounded-lg" src={item.product_image} /> </h3>
 
                                     </td>
                                     <td className="mb-6">
@@ -117,12 +117,24 @@ const Injection = () => {
                                     </td>
                                     <td className="btn mb-6 h-10 btn-secondary mr-3">
                                         <button
-                                        onClick={() => handleAddToCart(item)}
+                                            onClick={() => handleAddToCart(item)}
                                         >select</button>
                                     </td>
-                                    <td className="text-pink-600 mb-6 text-xl btn btn-outline">
-                                        <button><FaRegEye /></button>
-                                    </td>
+                                    <div className="dropdown dropdown-end ">
+                                        <div tabIndex={0} className=" m-1"><td className="text-pink-600 mt-6   text-xl btn btn-outline">
+                                            <button>
+                                                <FaRegEye />
+                                            </button>
+                                        </td></div>
+                                        <ul tabIndex={0} className="dropdown-content text-black z-[1] menu p-6 shadow bg-gradient-to-r from-cyan-500 to-blue-500 rounded-box w-72">
+                                            <li className="font-semibold"><a><img className="w-60 h-28 rounded-lg" src={item.product_image} /> </a></li>
+                                            <li className="font-semibold"><a>Name:{item.product_name}</a></li>
+                                            <li className="font-semibold"><a>Company:{item.product_company}</a></li>
+                                            <li className="font-semibold"><a>Price:{item.price}</a></li>
+                                            <li className="font-semibold"><a>{item.weight}ML</a></li>
+
+                                        </ul>
+                                    </div>
 
 
 
