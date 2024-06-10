@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useCart from "../../../Hook/useCart";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 
 
@@ -98,7 +99,18 @@ const Cart = () => {
                     <div>
                         <div className="flex justify-between mx-28 my-10  ">
                             <h2 className="text-2xl font-semibold">TOTAL ORDERS : {cart.length}</h2>
-                            <button className="btn w-[400PX]  bg-gradient-to-r from-cyan-500 to-blue-500 text-white sm:btn-sm md:btn-md ">CHECKOUT</button>
+                            <div>
+                                {
+                                    cart.length ? <>
+                                        <Link to='/payment'><button disabled={!cart.length} className="btn w-[400PX]  bg-gradient-to-r from-cyan-500 to-blue-500 text-white sm:btn-sm md:btn-md ">CHECKOUT</button></Link>
+                                    </>
+                                        :
+                                        <>
+                                            <h3 className="text-center font-semibold text-pink-600 text-3xl">YOU  HAVEN`T  ADDED  ANYTHING TO THE CART YET</h3>
+                                        </>
+                                }
+                            </div>
+
                             <h2 className="text-2xl font-semibold">TOTAL PRICE : {parseFloat(totalPrice).toFixed(2)} BDT </h2>
 
 
@@ -107,12 +119,12 @@ const Cart = () => {
                     </div>
 
                 </> :
-                <>
-                <div className="pt-40  mb-10">
-                    <h3 className="text-center font-semibold text-pink-600 text-3xl">YOU  HAVEN`T  ADDED  ANYTHING  YET</h3>
+                    <>
+                        <div className="pt-40  mb-10">
+                            <h3 className="text-center font-semibold text-pink-600 text-3xl">YOU  HAVEN`T  ADDED  ANYTHING TO THE CART  YET</h3>
 
-                </div>
-                </>
+                        </div>
+                    </>
             }
 
 

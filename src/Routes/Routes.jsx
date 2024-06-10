@@ -24,6 +24,7 @@ import AllUsers from "../Layout/Dashboard/AllUsers/AllUsers";
 
 import AddItem from "../Layout/Dashboard/AddItem/AddItem";
 import ManageMedicine from "../Layout/Dashboard/ManageMedicine/ManageMedicine";
+import Payment from "../Layout/Dashboard/Payment/Payment";
 
 
 
@@ -86,6 +87,12 @@ export const router = createBrowserRouter([
         
           path: 'cart',
           element: <PrivateRoute><Cart></Cart></PrivateRoute>
+       
+      },
+      {
+        
+          path: 'payment',
+          element: <Payment></Payment>
        
       }
     ]
