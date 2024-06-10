@@ -65,11 +65,17 @@ const CheckoutForm = () => {
             }
 
         })
+        if(confirmError){
+            console.log('confirm error')
+        }
+        else{
+            console.log('payment intent',paymentIntent)
+        }
 
     }
     return (
         <form onSubmit={handleSubmit}>
-            <CardElement className="text-2xl text-white"
+            <CardElement className="text-2xl mb-7 text-white"
                 options={{
                     style: {
                         base: {
@@ -85,7 +91,7 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button className="btn btn-md  mt-2 btn-primary" type="submit" disabled={!stripe || !clientSecret}>
+            <button className="btn w-20 mb-10 ml-52 mt-2 btn-primary" type="submit" disabled={!stripe || !clientSecret}>
                 Pay
             </button>
             <p className="text-red-600">{error}</p>

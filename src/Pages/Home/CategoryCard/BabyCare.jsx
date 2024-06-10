@@ -14,6 +14,7 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 const BabyCare = () => {
     const [products] = useProducts();
     const babyCare = products.filter(item => item.Category === 'babyCare');
+    
     const navigate = useNavigate();
     const location = useLocation();
     const { user } = useContext(AuthContext);

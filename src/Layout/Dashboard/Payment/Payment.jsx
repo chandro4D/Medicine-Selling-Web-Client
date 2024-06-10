@@ -5,11 +5,13 @@ import CheckoutForm from "./CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_payment_pk);
 const Payment = () => {
     return (
-        <div className="pt-40">
+        <div className="pt-40 ">
             <div>
                 <h1 className='text-center text-sky-500 text-4xl font-bold'>PAYMENT</h1>
             </div>
-            <div>
+            <br />
+            <br />
+            <div className="mx-[500px]">
                 <Elements stripe={stripePromise} >
                    <CheckoutForm></CheckoutForm>
                 </Elements>

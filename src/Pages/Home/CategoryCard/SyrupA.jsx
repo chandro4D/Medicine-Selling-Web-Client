@@ -1,10 +1,68 @@
 import { FaRegEye } from "react-icons/fa";
 import useProducts from "../../../Hook/useProducts";
 import { Helmet } from "react-helmet-async";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const SyrupA = () => {
     const [products] = useProducts();
     const syrup = products.filter(item => item.Category === 'syrup');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { user } = useContext(AuthContext);
+
+    const axiosSecure = useAxiosSecure();
+
+    const handleAddToCart = medicine => {
+        if (user && user.email) {
+            const cartItem = {
+                menuId: medicine._id,
+                email: user.email,
+                name: user.displayName,
+                image: medicine.product_image,
+                price: medicine.price,
+                company: medicine.product_company,
+                Category: medicine.Category,
+                weight: medicine.weight,
+                product: medicine.product_name
+            }
+            console.log(cartItem);
+            axiosSecure.post("/carts", cartItem)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            position: "top",
+                            icon: "success",
+
+                            title: `${medicine.product_name} `,
+                            text: "ADDED TO YOUR CART SUCCESSFULLY",
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: "YOU ARE NOT LOGGED IN",
+                text: "PLEASE LOGIN TO ADD TO CART",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "YES, LOGIN!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login", { state: { from: location } })
+                }
+            });
+        }
+    }
     return (
         <div className="mx-[90px]">
              <Helmet>
@@ -57,7 +115,9 @@ const SyrupA = () => {
                                         <h3> {item.weight}</h3>
                                     </td>
                                     <td className="btn h-10 btn-secondary mb-6 mr-3">
-                                        <button>select</button>
+                                        <button
+                                        onClick={() => handleAddToCart(item)}
+                                        >select</button>
                                     </td>
                                     <td className="text-pink-600 text-xl mb-6 btn btn-outline">
                                         <button><FaRegEye /></button>
