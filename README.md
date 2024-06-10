@@ -24,23 +24,18 @@
 
                                          *** Some Important Link***
                                     ------------------------------------
-                                    Admin email: bindhushakhormondal@gmail.com
-                                    Admin password: BindhuShakhor
+                                    Admin email: nabodipmondal@gmail.com
+                                    Admin password: NabodipMondal
 
-                                    Seller email: 
-                                    Seller password:
+                                    Seller email: narayonchandra@gmail.com
+                                    Seller password: NarayonChandraMondal
                              Live Link : https://medicine-selling-21aeb.web.app
 
        GitHub Server Link :  https://github.com/programming-hero-web-course1/b9a12-server-side-chandro4D 
         
        GitHub client Link :  https://github.com/programming-hero-web-course1/b9a12-client-side-chandro4D 
 
-                                        Npm Packages That I Use In My Web
-                                      -------------------------------------
-                                      
-                                                  1.React-tooltip
-                                                  2.SWIPER SLIDE
-                                                  3.Lottie React
+                                       
 
 
 
