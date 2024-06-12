@@ -37,8 +37,9 @@ const Dashboard = () => {
                                 <NavLink to="/dashboard/adminSalesReport "> <FaBook></FaBook> SALES REPORT</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/manageBookings"> <FaBook></FaBook> MANAGE BANNER</NavLink>
+                                <NavLink to="/dashboard/adminManageBanner "> <FaBook></FaBook> MANAGE BANNER</NavLink>
                             </li>
+                            
                         </>
                          :
                          isSeller ? 

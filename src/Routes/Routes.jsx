@@ -34,6 +34,8 @@ import SellerAd from "../Layout/Dashboard/SellerAd";
 import SellerPaymentHistory from "../Layout/Dashboard/SellerPaymentHistory";
 import AdminSalesReport from "../Layout/Dashboard/AdminSalesReport";
 
+import AdminManageBanner from "../Layout/Dashboard/AdminManageBanner";
+
 
 
 
@@ -182,6 +184,12 @@ export const router = createBrowserRouter([
         
         path: 'adminSalesReport ',
         element: <AdminSalesReport></AdminSalesReport>
+     
+    },
+    {
+        
+        path: 'adminManageBanner ',
+        element: <AdminManageBanner></AdminManageBanner>
      
     }
     ]
