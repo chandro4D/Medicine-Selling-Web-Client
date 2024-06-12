@@ -188,7 +188,7 @@ const AddItem = () => {
                                     </th>
                                     <td>
 
-                                        <h3><img src={item.product_image} /> </h3>
+                                        <h3><img className="w-20 h-16 rounded-lg" src={item.product_image} /> </h3>
 
                                     </td>
                                     <td>

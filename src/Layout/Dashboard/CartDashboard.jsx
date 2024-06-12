@@ -1,16 +1,14 @@
-import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hook/useAxiosSecure";
-import useCart from "../../../Hook/useCart";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
 
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useCart from '../../Hook/useCart';
+import useAxiosSecure from '../../Hook/useAxiosSecure';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
-
-const Cart = () => {
+const CartDashboard = () => {
     const [cart, refetch] = useCart();
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
     const axiosSecure = useAxiosSecure();
-
 
     const handleDelete = id => {
         Swal.fire({
@@ -38,6 +36,7 @@ const Cart = () => {
             }
         });
     }
+
     return (
         <div >
             {
@@ -135,4 +134,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default CartDashboard;

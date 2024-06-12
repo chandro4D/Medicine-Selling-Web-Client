@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
-const UserHome = () => {
+const SellerHome = () => {
     const {user} = useContext(AuthContext);
     return (
         <div>
@@ -11,4 +11,4 @@ const UserHome = () => {
     );
 };
 
-export default UserHome;
+export default SellerHome;

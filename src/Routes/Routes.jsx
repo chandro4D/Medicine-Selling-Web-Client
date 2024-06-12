@@ -25,6 +25,14 @@ import AllUsers from "../Layout/Dashboard/AllUsers/AllUsers";
 import AddItem from "../Layout/Dashboard/AddItem/AddItem";
 import ManageMedicine from "../Layout/Dashboard/ManageMedicine/ManageMedicine";
 import Payment from "../Layout/Dashboard/Payment/Payment";
+import PaymentHistory from "../Layout/Dashboard/PaymentHistory/PaymentHistory";
+import CartDashboard from "../Layout/Dashboard/CartDashboard";
+import AdminHome from "../Layout/Dashboard/AdminHome";
+import SellerHome from "../Layout/Dashboard/SellerHome";
+import PaymentManagement from "../Layout/Dashboard/PaymentManagement";
+import SellerAd from "../Layout/Dashboard/SellerAd";
+import SellerPaymentHistory from "../Layout/Dashboard/SellerPaymentHistory";
+import AdminSalesReport from "../Layout/Dashboard/AdminSalesReport";
 
 
 
@@ -94,6 +102,12 @@ export const router = createBrowserRouter([
           path: 'payment',
           element: <Payment></Payment>
        
+      },
+      {
+        
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
+       
       }
     ]
   },
@@ -120,7 +134,56 @@ export const router = createBrowserRouter([
       {
         path: 'manageMedicine',
         element: <ManageMedicine></ManageMedicine>
-      }
+      },
+      {
+        
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
+     
+    },
+    {
+        
+        path: 'dashboardCart',
+        element: <CartDashboard></CartDashboard>
+     
+    },
+    {
+        
+        path: 'adminHome',
+        element: <AdminHome></AdminHome>
+     
+    },
+    {
+        
+        path: 'sellerHome',
+        element: <SellerHome></SellerHome>
+     
+    },
+    
+    {
+        
+        path: 'paymentManagement',
+        element: <PaymentManagement></PaymentManagement>
+     
+    },
+    {
+        
+        path: 'sellerAd',
+        element: <SellerAd></SellerAd>
+     
+    },
+    {
+        
+        path: 'sellerPaymentHistory',
+        element: <SellerPaymentHistory></SellerPaymentHistory>
+     
+    },
+    {
+        
+        path: 'adminSalesReport ',
+        element: <AdminSalesReport></AdminSalesReport>
+     
+    }
     ]
   }
 ]);

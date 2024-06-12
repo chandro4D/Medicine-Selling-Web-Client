@@ -5,6 +5,7 @@ import "./Slider.css"
 import { useEffect, useState } from 'react';
 
 const Slider = () => {
+    
     const [image, setImage] = useState([]);
     useEffect(() => {
         fetch('slider.json')
@@ -31,7 +32,7 @@ const Slider = () => {
                 >   {
                     image.map(item =>  <SwiperSlide key={item.id}>
                             <div className="slide "  >
-                              <img src={item.image} />
+                              <img className='w-[1400px] h-[500px] rounded-xl' src={item.image} />
                             </div>
                         </SwiperSlide>)
                     }

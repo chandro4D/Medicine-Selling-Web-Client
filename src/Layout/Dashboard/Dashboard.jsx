@@ -31,10 +31,10 @@ const Dashboard = () => {
                                 <NavLink to="/dashboard/addItems"><MdOutlineManageAccounts/>MANAGE CATEGORY</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/manageItems"><FaList></FaList> PAYMENT MANAGEMENT</NavLink>
+                                <NavLink to="/dashboard/paymentManagement"><FaList></FaList> PAYMENT MANAGEMENT</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard/manageBookings"> <FaBook></FaBook> SALES REPORT</NavLink>
+                                <NavLink to="/dashboard/adminSalesReport "> <FaBook></FaBook> SALES REPORT</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/dashboard/manageBookings"> <FaBook></FaBook> MANAGE BANNER</NavLink>
@@ -44,16 +44,16 @@ const Dashboard = () => {
                          isSeller ? 
                          <>
                           <li>
-                                <NavLink to="/dashboard/userHome"><FaHome></FaHome> Seller Home</NavLink>
+                                <NavLink to="/dashboard/sellerHome"><FaHome></FaHome> Seller Home</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/manageMedicine'><FaCartPlus></FaCartPlus> Manage Medicine</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Payment History</NavLink>
+                                <NavLink to='/dashboard/sellerPaymentHistory'><FaCartPlus></FaCartPlus> Payment History</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Advertisement</NavLink>
+                                <NavLink to='/dashboard/sellerAd'><FaCartPlus></FaCartPlus> Advertisement</NavLink>
                             </li>
                          </>
                          :
@@ -62,7 +62,7 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/userHome"><FaHome></FaHome> User Home</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/cart'><FaCartPlus></FaCartPlus> My cart</NavLink>
+                                    <NavLink to='/dashboard/dashboardCart'><FaCartPlus></FaCartPlus> My cart</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/paymentHistory'><FaCartPlus></FaCartPlus> Payment History</NavLink>

@@ -73,11 +73,11 @@ const Shop = () => {
       }
     }
     return (
-        <div className="mx-10">
+        <div className="mx-28 mb-10">
             <Helmet>
                 <title>HealthHaven | Shop</title>
             </Helmet>
-            <div><h1 className='text-center text-sky-500 text-4xl font-bold mb-5 pt-40'>SEE ALL MEDICINE HERE</h1></div>
+            <div><h1 className='text-center text-sky-500 text-4xl font-bold pt-40 mb-10'>SEE ALL MEDICINE HERE</h1></div>
 
 
 
@@ -85,7 +85,7 @@ const Shop = () => {
                 <table className="table ">
                     {/* head */}
                     <thead >
-                        <tr>
+                        <tr className="text-xl text-sky-600">
                             <th>
                             </th>
                             <th>Image</th>

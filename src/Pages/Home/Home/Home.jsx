@@ -11,18 +11,24 @@ const Home = () => {
             <Helmet>
                 <title>HealthHaven | Home</title>
             </Helmet>
-            <div className="mb-20">
-                <h3 className="pt-40 text-center text-3xl text-red">This Is Home</h3>
 
+            <div className="pt-44 mb-10">
+                <h1 className='text-center text-sky-500 mb-2 text-4xl font-bold'>WELCOME TO HEALTH HAVEN</h1>
+               
+                <h1 className='text-center text-sky-500 text-4xl font-bold'>SEE SOME PRODUCTS</h1>
             </div>
+
+
             <div>
                 <Slider></Slider>
+                <h1 className='text-center text-sky-500 text-4xl mt-207 mb-14 font-bold'>ALL CATEGORY OF PRODUCTS HERE</h1>
+                
                 <CategoryCard></CategoryCard>
                 <div>
                     <h1 className='text-center text-sky-500 text-4xl font-bold'>SEE SOME DISCOUNT PRODUCTS</h1>
                 </div>
                 <Discount></Discount>
-               
+
             </div>
             {/* ---------------------------------FAQ-------------------- */}
             <div><h1 className='text-center text-sky-500 text-4xl font-bold'>SOME FREQUENTLY ASKED QUESTION</h1></div>

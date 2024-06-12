@@ -75,7 +75,7 @@ const Capsule = () => {
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr>
+                            <tr className="text-xl text-sky-600">
                                 <th>
                                 </th>
                                 <th>Image</th>
@@ -115,13 +115,13 @@ const Capsule = () => {
                                     <td className="mb-6">
                                         <h3> {item.weight}</h3>
                                     </td>
-                                    <td className="btn h-10 btn-secondary mb-6 mr-3">
+                                    <td className="btn h-10 btn-secondary mt-4 mr-3">
                                         <button
                                             onClick={() => handleAddToCart(item)}
                                         >select</button>
                                     </td>
                                     <div className="dropdown dropdown-end ">
-                                        <div tabIndex={0} className=" m-1"><td className="text-pink-600 mt-6   text-xl btn btn-outline">
+                                        <div tabIndex={0} className=" m-1"><td className="text-pink-600 mt-4   text-xl btn btn-outline">
                                             <button>
                                                 <FaRegEye />
                                             </button>

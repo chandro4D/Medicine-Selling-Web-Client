@@ -18,6 +18,7 @@ const BabyCare = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { user } = useContext(AuthContext);
+    
 
     const axiosSecure = useAxiosSecure();
 
@@ -72,13 +73,13 @@ const BabyCare = () => {
             <Helmet>
                 <title>HealthHaven | Tablet</title>
             </Helmet>
-            <h3 className="pt-40 text-center">Tablet A</h3>
+            <div><h1 className='text-center text-sky-500 text-4xl font-bold pt-40 mb-10'>SEE ALL BABY CARE PRODUCTS HARE</h1></div>
             <div className="ml-[60px] mb-6">
                 <div className="overflow-x-auto ">
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr>
+                            <tr className="text-xl text-sky-600">
                                 <th>
                                 </th>
                                 <th>Image</th>

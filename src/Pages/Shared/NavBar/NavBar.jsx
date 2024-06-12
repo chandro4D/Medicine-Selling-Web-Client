@@ -61,9 +61,7 @@ const NavBar = () => {
                 </>
                 :
                 <>
-                    <div>
-                        <Link to="/register"><li ><a className="btn btn-secondary mt-3 text-xl text-white ">Join Us</a></li></Link>
-                    </div>
+                    
                 </>
 
         }
@@ -80,7 +78,7 @@ const NavBar = () => {
                         {Links}
                     </ul>
                 </div>
-                <div className="flex lg:ml-[130px]">
+                <div className="flex lg:ml-[130px] mr-[650px]">
                     <img className="mr-2 w-[60px] h-[60px] rounded-full" src="../../../../public/default.png" alt="" />
                     <a className="text-white text-2xl font-bold mr-[300px]  pt-3">HealthHaven</a>
                 </div>

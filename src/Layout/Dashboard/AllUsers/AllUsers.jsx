@@ -60,17 +60,23 @@ const AllUsers = () => {
     return (
         <div className="ml-36">
             <div>
-                
+
             </div>
-            <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">All Users</h2>
-                <h2 className="text-3xl">Total Users : {users.length}</h2>
+            <div className="text-center text-sky-600 font-semibold ">
+                <div className=" justify-evenly my-4">
+                    <h2 className="text-3xl">ALL USERS</h2>
+
+                </div>
+                <div className=" justify-evenly my-4">
+
+                    <h2 className="text-3xl">TOTAL USERS : {users.length}</h2>
+                </div>
             </div>
             <div className="overflow-x-auto">
                 <table className="table ">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-xl text-sky-600">
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
@@ -85,7 +91,7 @@ const AllUsers = () => {
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                
+
                                 <td>
                                     {user.role === 'admin' ? 'Admin' : user.role === 'seller' ? 'Seller' :
                                         <button
